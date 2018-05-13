@@ -24,7 +24,7 @@ pipeline {
       success       {
           emailext (     to: 'ramanjaneya.naidu@gmail.com',
                     subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                      body: "Please go to ${BUILD_URL} and verify the build"
+                      body: "Please go to ${BUILD_URL} and verify the build"  )
          }
 
      }
