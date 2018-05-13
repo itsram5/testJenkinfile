@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
@@ -15,18 +14,19 @@ pipeline {
                     sh 'mvn test'
                     }
                   }
-
         }
-
     }
-
    post {
-      always       {
-       mail   subject: "${BUILD_STATUS} : Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Please go to ${BUILD_URL} and verify the build" ,
-                 to: 'ramanjaneya.naidu@gmail.com'
-         }
+         success {
+                   mail   subject: " SUCCESS : Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: "Please go to ${BUILD_URL} and verify the build" ,
+                    to: 'ramanjaneya.naidu@gmail.com'
+                 }
 
+          failure {
+                  mail   subject: " FAILURE : Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                  body: "Please go to ${BUILD_URL} and verify the build" ,
+                  to: 'ramanjaneya.naidu@gmail.com'
+                }
      }
-
  }
