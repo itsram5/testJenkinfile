@@ -1,5 +1,3 @@
-def Emailsubject: "'${env.BUILD_STATUS}': Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-
 pipeline {
     agent any
 
