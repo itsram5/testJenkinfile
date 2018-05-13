@@ -5,11 +5,18 @@ pipeline {
             steps {
                 echo 'Building'
             }
+            steps {
+                               withMaven(maven: 'mvn_3.5.3') {
+                                sh 'mvn clean compile'
+                                }
+                              }
         }
         stage('Test') {
             steps {
-                echo 'Testing'
-            }
+                   withMaven(maven: 'mvn_3.5.3') {
+                    sh 'mvn test'
+                    }
+                  }
         }
         stage('Deploy') {
             steps {
