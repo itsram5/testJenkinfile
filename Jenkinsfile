@@ -1,26 +1,21 @@
 pipeline {
     agent any
+    def mvnTool = tool 'mvn_3.5.3'
     stages {
         stage('Build') {
             steps {
-                withMaven(maven: 'mvn_3.5.3') {
-                  sh 'mvn clean compile'
-                }
+
+                  sh "${mvnTool}/bin/mvn clean compile"
+
             }
         }
         stage('Test') {
            steps {
-                   withMaven(maven: 'mvn_3.5.3') {
-                    sh 'mvn test'
-                    }
+
+                   sh "${mvnTool}/bin/mvn test"
+
                   }
         }
-        stage('Deploy') {
-            steps {
-                   withMaven(maven: 'mvn_3.5.3') {
-                    sh 'mvn clean compile'
-                    }
-                  }
-        }
+
     }
 }
