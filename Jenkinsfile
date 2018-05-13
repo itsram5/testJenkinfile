@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -22,9 +23,7 @@ pipeline {
 
    post {
       always       {
-       mail   subject: "‘${env.BUILD_STATUS}‘: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Please go to ${BUILD_URL} and verify the build" ,
-                 to: 'ramanjaneya.naidu@gmail.com'
+       mail  to: 'ramanjaneya.naidu@gmail.com'
          }
 
      }
